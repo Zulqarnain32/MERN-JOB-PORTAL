@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +35,9 @@ const Login = () => {
   return (
     <div className="register-container">
       <form className="register-form" onSubmit={handleSubmit}>
-        <h1 className="heading">Login</h1>
+      <img src="/assets/logi1.png" className="logo-img img-login"/>
+
+        <h2 className="heading">Login</h2>
         <p>Email</p>
         <input
           type="text"

@@ -8,9 +8,15 @@ import Registration from "./components/Registration";
 import UserDashboard from "./components/UserDashboard";
 import Nothing from "./components/Nothing";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
+import CreateJob from "./components/CreateJob";
+import Jobs from "./components/Jobs";
+import ManageJob from "./components/ManageJob";
+import ReadJobInfo from "./components/ReadJobInfo";
+import UpdateProfile from "./components/UpdateProfile";
+import EditJob from "./components/EditJob";
+import AppliedJobs from "./components/AppliedJobs";
 
 const App = () => {
   const [userIs, setUserIs] = useState("");
@@ -45,6 +51,14 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/create-job" element={<CreateJob />} />
+          <Route path="/job" element={<Jobs />} />
+          <Route path="/manage-job" element={<ManageJob />} />
+          <Route path="job/readjob/:jobId" element={< ReadJobInfo/>} />
+          <Route path="/update-profile/:id" element={< UpdateProfile/>} />
+          <Route path="/edit-job/:id" element={< EditJob/>} />
+          <Route path="/job/applied-job" element={< AppliedJobs/>} />
+
 
           <Route
             path="/dashboard"

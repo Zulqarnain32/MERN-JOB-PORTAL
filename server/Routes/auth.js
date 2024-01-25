@@ -83,6 +83,42 @@ const verifyUser = (req,res,next) => {
     res.json("success")
   })
 
+  
+  const verifyToken = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) {
+      console.log('No token found');
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+    jwt.verify(token, 'Secret Key', (err, decoded) => {
+      if (err) {
+        console.error('Error verifying token:', err);
+        return res.status(401).json({ message: 'Invalid token' });
+      }
+      console.log('Decoded token:', decoded);
+      req.userId = decoded.id;
+      req.userRole = decoded.role;
+      next();
+    });
+  };
+
+//   get single user 
+router.get('/user', verifyToken, async (req, res) => {
+    try {
+      const user = await UserModel.findById(req.userId, { name: 2, email: 1,role:1, _id: 0 });
+      res.json({ name: user.name, email: user.email,role:user.role });
+    } catch (error) {
+        console.log("backend error");
+      res.status(500).json({ message: 'Internal Server Error' });
+    }
+  });
+
+
+
+
+
+
+
 //logout the user
 router.get('/logout',  (req,res) => {
     res.clearCookie('token')
@@ -96,6 +132,35 @@ router.get('/stakeholders', async (req,res) => {
         return res.json(users)
     })
     .catch(err => console.log(err))
+})
+
+
+//update user profile
+//first get user
+router.get('/getUser/:id', (req, res) => {
+    const id = req.params.id;
+    console.log("id hai " + id); 
+    UserModel.findById({_id: id})
+        .then(result => {
+            console.log(result); 
+            res.json(result);
+        })
+        .catch(err => {
+            console.log(err); 
+            res.json(err);
+        });
+})
+//second updata uder
+router.put('/editUser/:id', (req,res) => {
+    const id = req.params.id;
+    UserModel.findByIdAndUpdate({_id:id},{
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password
+    })
+    
+    .then(result => res.json(result))
+    .catch(err => res.json(err))
 })
 
 module.exports = router

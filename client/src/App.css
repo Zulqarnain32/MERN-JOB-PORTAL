@@ -27,8 +27,13 @@
   height: 50px;
   vertical-align: middle;
 }
+.img-login{
+  margin-bottom: 10px;
+  display: block;
+  margin: 10px auto;
+}
 .blue{
-  color: rgb(115, 118, 232);
+  color:#247bf7;
 }
 .apply-home-btn{
   font-size: 18px;
@@ -39,16 +44,18 @@
   vertical-align: middle;
   font-size: 21px;
   color: rgb(115, 118, 232);
+  color:#247bf7;
 }
 .common-btn{
-  background-color:rgb(115, 118, 232);
+  background-color:#247bf7;
+
   padding: 10px 20px;
   border: 0;
   cursor: pointer;
   color: #fff;
 }
 .login-nav-btn{
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
 
@@ -65,6 +72,10 @@
   padding: 30px 20px;
   width: 300px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.register-form h2{
+color:#247bf7;
+
 }
 .register-form p{
   margin-top: 14px;
@@ -229,8 +240,8 @@
   margin: 30px auto;
 }
 .teams img{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   vertical-align: middle;
   margin-top: -10px;
   margin-left: 20px;
@@ -260,6 +271,7 @@
 }
 .footer-social-links p {
   background-color:rgb(115, 118, 232);
+  background-color:#247bf7;
   height: 40px;
   width: 40px;
   text-align: center;
@@ -279,7 +291,7 @@
   margin-bottom: 35px;
   font-weight: 600;
   font-size: 20px;
-  color:rgb(115, 118, 232);
+  color:#247bf7;
 }
 .footer-link p {
   margin-bottom: 30px;
@@ -289,31 +301,325 @@
   text-align: center;
   line-height: 30px;
   color: #fff;
-  background-color:rgb(115, 118, 232);
+  background-color:#247bf7;
+
 }
 
 /* Common Dashboard  */
-.recruiter-container{
+.recruiter-container ,.user-container{
   /* max-height: calc(100vh - 70px); */
   height: calc(100vh - 70px);
-  background-color: yellow;
+  /* background-color: yellow; */
   display: flex;
 }
-.recruiter-control{
-  background-color: red;
+.recruiter-control, .user-control{
+  background-color: rgb(206, 201, 201,.2);
   height: 100%;
   flex-basis: 20%;
 }
-.recruiter-info{
-  background-color: blue;
+.recruiter-info, .user-info{
   height: 100%;
   flex-basis: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.recruiter-info-container{
+.recruiter-info-container, .user-info-container{
   width: 400px;
   padding: 30px 20px;
-  background-color: orchid;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
+.recruiter-ul{
+  display: block;
+}
+.recruiter-link{
+  display: block;
+  text-align: center;
+  height: 40px;
+  border-top: 1px solid #5e5d5d;
+  /* border-top: 1px solid #fff; */
+  border-bottom: 1px solid #5e5d5d;
+  /* border-bottom: 1px solid #fff; */
+  line-height: 40px;
+  color: black;
+}
+.recruiter-link:nth-child(3){
+  border-top: none;
+}
+.recruiter-link:hover{
+  background-color:#247bf7;
+
+  color: #fff;
+}
+.login-user-name{
+  text-transform: capitalize;
+  position: relative;
+  font-weight: 550;
+  font-size: 20px;
+}
+.login-user-name span{
+  position: absolute;
+  left: 100px;
+  font-weight: normal;
+  color: #969595;
+}
+.email{
+  text-transform: none;
+}
+.button-update-me{
+  display: inline-block;
+  margin-top: 10px;
+}
+.login-user-image{
+  text-align: center;
+}
+.login-user-image img{
+  height: 100px;
+  width: 100px;
+  margin-bottom: 14px;
+}
+.user-profile{
+  text-align: center;
+  padding-top: 20px;
+}
+.user-profile p {
+  text-transform: capitalize;
+}
+.u-p-img{
+  height: 60px;
+  margin-bottom: 10px;
+}
+.bold{
+  font-weight: 600;
+}
+.no-found{
+  color: red;
+}
+
+
+/*? Create job page css */
+.create-job-container{
+  /* background-color: red; */
+  height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.create-job-container form{
+  width: 600px;
+  padding: 30px 15px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.make-it-flex{
+  display: flex;
+  justify-content: space-between;
+} 
+.cr-title{
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 30px;
+}
+.create-job-container p{
+  margin-bottom: 3px;
+}
+.create-job-container input{
+  margin-bottom: 15px;
+  width: 270px;
+  height: 40px;
+  padding: 0 12px;
+  font-size: 18px;
+}
+.apply-now {
+  margin-top: 10px;
+  width: 100%;
+  font-size: 20px; 
+}
+.awailable-job{
+  margin-top: 12px;
+  font-size: 20px;
+  color: #247bf7;
+}
+
+.job-container{
+  margin: 0 auto;
+  /* margin-top: 0px; */
+  width: 90%;
+  padding: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  justify-content: flex-start;
+  column-gap: 30px;
+  text-transform: capitalize;
+  flex-wrap: wrap;
+  row-gap: 30px;
+
+}
+.job{
+  padding: 30px 20px;
+  flex-basis: 31%;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.job-heading{
+  /* background-color: yellow; */
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 14px;
+}
+
+.job-heading .letter{
+   flex-basis: 20%;
+   height: 50px;
+   height: 100%;
+}
+.l{
+  background-color: orange;
+  width: 50px;
+  height: 50px;
+  color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.job-title{
+  font-weight: 700;
+  font-size: 22px;
+}
+.job-info p{
+  margin-bottom: 10px;
+  color: rgb(109, 109, 109);
+}
+.btns{
+  margin-top: 10px;
+  display: flex;
+}
+.btn{
+  padding: 7px 22px;
+  margin-right: 12px;
+  color: #fff;
+  cursor: pointer;
+}
+.apply-btn{
+  background-color:rgb(115, 118, 232);
+  background-color:#247bf7;
+
+  
+}
+.details{
+  background-color: orange;
+}
+.delete{
+  background-color: red;
+}
+.yellow{
+  background-color: rgb(255, 255, 38,.5);
+  display: inline-block;
+  padding: 3px 8px;
+}
+.green{
+  padding: 3px 8px;
+  background-color: rgb(118, 213, 118,.5);
+  display: inline-block;
+}
+.search-job{
+  height: 70px;
+  margin-top: 20px;
+  text-align: center;
+}
+.search-field{
+  height: 40px;
+  padding: 0 12px;
+  font-size: 18px;
+  width: 300px;
+  
+}
+
+
+
+
+/* Admin pnael css */
+.admin-panel-container{
+  margin: 100px auto;
+  display: flex;
+  width: 82%;
+  flex-wrap: wrap;
+
+  justify-content: flex-start;
+  gap: 30px;
+}
+.login-user-container{
+  background-color: rgb(255, 255, 255);
+  padding: 30px 20px;
+  flex-basis: 30%;
+  font-size: 20px;
+  box-shadow: rgba(63, 63, 63, 0.3) 3px 8px 24px -10px;
+
+}
+.admin-panel-container p{
+  margin-top: 10px;
+}
+.admin-panel-container p span{
+  font-weight: bold;
+  margin-right: 12px;
+}
+.del-user-btn{
+  background-color: red;
+  border: none;
+  height: 30px;
+  padding: 2px 16px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 14px;
+}
+
+.user-container p{
+  
+  margin-bottom: 10px;
+}
+
+
+
+/* read job  */
+.read-job-container{
+  width: 82%;
+  margin: 30px auto;
+}
+.read-job-container h1{
+  text-align: center;
+  text-transform: capitalize;
+}
+.post-by{
+  text-align: center;
+  margin: 10px 0;
+  text-transform: capitalize;
+}
+.post-time{
+  color: rgb(172, 177, 177);
+  text-align: center;
+  margin-bottom: 30px;
+}
+.underline{
+  text-decoration: underline;
+  margin: 10px 0;
+}
+.des-p{
+  line-height: 27px;
+  margin-bottom: 10px;
+}
+.vacancy{
+  margin: 8px 0;
+}
+.read-job-container ul li{
+  list-style: disc;
+  margin-left: 30px;
+}
+.sallary{
+  margin-top: 10px;
+}
+.send-cv{
+  margin-bottom: 6px;
+}
+
+
+/* applied jobs container  */

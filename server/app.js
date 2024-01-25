@@ -4,18 +4,18 @@ const app = express();
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
 const userRouter = require('./Routes/auth')
-// const jobRouter = require('./Routes/createjob')
+const jobRouter = require('./Routes/job')
 
 const port = 5000;
 app.use(cors({
     origin: ['http://localhost:5173'],
-    method: ['GET','POST','DELETE'],
+    method: ['GET','POST','DELETE','PUT'],
     credentials:true
 }))
 app.use(express.json())
 app.use(cookieParser())
 app.use('/auth',userRouter)
-// app.use('/createjob',jobRouter)
+app.use('/job',jobRouter)
 
 mongoose.connect('mongodb://127.0.0.1:27017/MernJobPortal')
 .then(() => {
