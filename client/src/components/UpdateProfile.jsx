@@ -6,23 +6,33 @@ const UpdateProfile = () => {
     const {id} = useParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    axios.get("http://localhost:5000/auth/getUser/" + id)
+    .then((res) => {
+      console.log(res);
+      setName(res.data.name)
+      setEmail(res.data.email)
+    })
+  }, [])
+
+
+  const handleUpdate = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/auth/getUser/" + id)
+      .put("http://localhost:5000/auth/update-user/" + id, {name,email})
       .then((result) => {
         console.log(result.data);
+        navigate("/dashboard")
       })
       .catch((err) => console.log(err));
   };
 
   return (
     <div className="register-container">
-      <form className="register-form" onSubmit={handleSubmit}>
+      <form className="register-form" onSubmit={handleUpdate}>
         <h1 className="heading">Update Profile</h1>
 
         <p>Name</p>
@@ -30,32 +40,23 @@ const UpdateProfile = () => {
           type="text"
           className="login-input"
           placeholder="Name"
-          value="hello"
           onChange={(e) => setName(e.target.value)}
+          value={name}
         />
         <p>Email</p>
         <input
           type="text"
           className="login-input"
           placeholder="Email"
-          value={email}
           onChange={(e) => setEmail(e.target.value)}
+          value={email}
         />
-        <p>Password</p>
-        <input
-          type="password"
-          className="login-input"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      
         <p className="error">{error}</p>
         <button type="submit" className="login-btn common-btn">
           Update
         </button>
-        <Link to="/login" className="account">
-          Already have an account{" "}
-        </Link>
+       
       </form>
     </div>
     

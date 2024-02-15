@@ -31,33 +31,7 @@ router.delete('/delete/:id', (req,res) => {
     .catch(err => res.json(err))
 })
 
-//update job 
-//first get single job
-router.get('/getJob/:id', (req, res) => {
-    const id = req.params.id;
-    console.log("id hai " + id); 
-    JobModel.findById({_id: id})
-        .then(result => {
-            console.log(result); 
-            res.json(result);
-        })
-        .catch(err => {
-            console.log(err); 
-            res.json(err);
-        });
-})
-//second updata job
-router.put('/editJob/:id', (req,res) => {
-    const id = req.params.id;
-    JobModel.findByIdAndUpdate({_id:id},{
-        name:req.body.name,
-        email:req.body.email,
-        password:req.body.password
-    })
-    
-    .then(result => res.json(result))
-    .catch(err => res.json(err))
-})
+
 
 
 // first step for saving applied jobs in user who are login
@@ -77,7 +51,7 @@ router.get('/saved-jobs/:id', (req,res) => {
 
 //fetch
 router.put('/', async (req,res) => {
-    // second step to save recipe inside the user
+    // second step to save job inside the user
     const job = await JobModel.findById({_id: req.body.jobId})
     const user = await UserModel.findById({_id: req.body.userId})
 
@@ -104,5 +78,28 @@ router.get('/user-jobs/:id', async (req, res) => {
     res.json(job);
   });
 
+//   edit job section
+// first step of updating
+router.get('/getUser/:id', async(req,res) => {
+  const id = req.params.id;
+  JobModel.findById({_id:id})
+  .then(job => res.json(job))
+  .catch(err => res.json(err))
+  
+})
+
+router.put("/edit-job/:id", async(req,res) => {
+  const id = req.params.id;
+  JobModel.findByIdAndUpdate({_id:id},{
+    jobDate:req.body.jobDate,
+    jobStatus:req.body.jobDate,
+    jobTitle:req.body.jobTitle,
+    company:req.body.company,
+    city:req.body.city,
+    jobType:req.body.jobType
+  })
+  .then(job => res.json(job))
+  .catch(err => res.json(err))
+})
 
 module.exports = router

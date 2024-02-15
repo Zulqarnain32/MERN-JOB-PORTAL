@@ -48,6 +48,7 @@ const Jobs = () => {
     axios.put("http://localhost:5000/job/", {userId,jobId})
     .then((res) => {
      setAppliedJobs(res.data.savedJobs)
+     window.location.reload();
 
      console.log(res.data); //will print item food id 
      console.log("from saved jobs");

@@ -105,13 +105,36 @@ const verifyUser = (req,res,next) => {
 //   get single user 
 router.get('/user', verifyToken, async (req, res) => {
     try {
-      const user = await UserModel.findById(req.userId, { name: 2, email: 1,role:1, _id: 0 });
-      res.json({ name: user.name, email: user.email,role:user.role });
+      const user = await UserModel.findById(req.userId, { name: 2, email: 1,role:1, _id: 1 });
+      res.json({ name: user.name, email: user.email,role:user.role,id:user._id });
     } catch (error) {
         console.log("backend error");
       res.status(500).json({ message: 'Internal Server Error' });
     }
   });
+
+
+//   updating user profile
+// step 1 get user first
+
+router.get('/getUser/:id', (req,res) => {
+    const id = req.params.id;
+    UserModel.findById({_id:id})
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+})
+
+// step 2 update values
+
+router.put('/update-user/:id', (req,res) => {
+    const id = req.params.id;
+    UserModel.findByIdAndUpdate({_id:id}, {
+        name:req.body.name,
+        email:req.body.email,
+    })
+    .then(user => res.json(user))
+    .catch(err => res.json(err))
+})
 
 
 

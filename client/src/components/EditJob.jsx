@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from 'react'
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 const EditJob = () => {
     const [ jobTitle,setJobTitle ] = useState("")
@@ -9,7 +9,23 @@ const EditJob = () => {
     const [ jobStatus,setJobStatus ] = useState("")
     const [ jobDate,setJobDate ] = useState("")
     const [ error,setError ] = useState("") 
+
     const navigate = useNavigate()
+    const {id} = useParams()
+    console.log("edit " + id);
+
+    useEffect(() => {
+        axios.get('http://localhost:5000/job/getUser/'+ id)
+        .then((result) => {
+            setCompany(result.data.company);
+            setCity(result.data.city);
+            setJobDate(result.data.jobDate);
+            setJobStatus(result.data.jobStatus);
+            setJobType(result.data.jobType);
+            setJobTitle(result.data.jobTitle)
+             console.log(result);
+        }).catch(err => console.log(err))
+    }, [])
 
     useEffect(() => {
         axios.get("http://localhost:5000/auth/dashboard")
@@ -26,23 +42,18 @@ const EditJob = () => {
     }, [])
 
 
-    const handleSubmit = (e) => {
+    const handleUpdate = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/job/createjob", { jobDate,jobStatus,jobTitle,company,city,jobType })
+        axios.put("http://localhost:5000/job/edit-job/"+ id,{ jobDate,jobStatus,jobTitle,company,city,jobType })
         .then((result) => {
-            console.log(result.data.message);
-            if(result.data.message === "fill all form fields"){
-               setError("fill all form fields")
-            } else if (result.data.message === "job created"){
-                navigate('/job')
-            }
+            navigate("/job")
         })
     }
   return (
     <>
        <div className="create-job-container">
-          <form onSubmit={handleSubmit}>
-          <h1 className="cr-title">Create Job</h1> 
+          <form onSubmit={handleUpdate}>
+          <h1 className="cr-title">Edit Job</h1> 
             <div className='make-it-flex'>
                 <div>
                     <p>Job Title</p>
@@ -50,8 +61,8 @@ const EditJob = () => {
                        type="text" 
                        placeholder='Job Title'
                        className='cr-fields'
-                       value={jobTitle}
                        onChange={(e) => setJobTitle(e.target.value)}
+                       value={jobTitle}
                     />
                 </div>
                 <div>
@@ -60,8 +71,8 @@ const EditJob = () => {
                        type="text" 
                        placeholder='Company Name'
                        className='cr-fields'
-                       value={company}
                        onChange={(e) => setCompany(e.target.value)}
+                       value={company}
                     />
                 </div>
             </div>
@@ -72,8 +83,8 @@ const EditJob = () => {
                        type="date" 
                        placeholder='Job Title'
                        className='cr-fields'
-                       value={jobDate}
                        onChange={(e) => setJobDate(e.target.value)}
+                       value={jobDate}
                     />
                 </div>
                 <div>
@@ -82,8 +93,8 @@ const EditJob = () => {
                        type="text" 
                        placeholder='Enter City'
                        className='cr-fields'
-                       value={city}
                        onChange={(e) => setCity(e.target.value)}
+                       value={city}
                     />
                 </div>
             </div>
@@ -94,8 +105,8 @@ const EditJob = () => {
                        type="text" 
                        placeholder='Internship'
                        className='cr-fields'
-                       value={jobType}
                        onChange={(e) => setJobType(e.target.value)}
+                       value={jobType}
                     />
                 </div>
                 <div>
@@ -104,13 +115,14 @@ const EditJob = () => {
                        type="text" 
                        placeholder='Pending'
                        className='cr-fields'
-                       value={jobStatus}
                        onChange={(e) => setJobStatus(e.target.value)}
+                       value={jobStatus}
                     />
                 </div>
             </div>
                 <p className='error'>{error}</p>
-                <button className="apply-now common-btn" type='submit'>Create Job</button>
+                <button className="apply-now common-btn" type='submit'>
+                Edit Job</button>
           </form>
        </div> 
     </>

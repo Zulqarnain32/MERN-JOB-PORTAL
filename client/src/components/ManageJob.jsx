@@ -30,6 +30,7 @@ const ManageJob = () => {
 
   const handleDelete = (id) => {
     axios.delete('http://localhost:5000/job/delete/'+ id)
+    window.location.reload();
   }
  
 

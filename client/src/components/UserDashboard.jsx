@@ -11,6 +11,7 @@ const UserDashboard = () => {
     axios.get('http://localhost:5000/auth/user')  // Use the correct URL
       .then((response) => {
         setUserData(response.data);
+        console.log(response.data);
         setUserExist(true)
       })
       .catch((error) => {
@@ -47,7 +48,7 @@ const UserDashboard = () => {
               <p className='login-user-name'>Name  <span>{userData.name}</span>  </p>
               <p className='login-user-name email'>Email  <span>{userData.email}</span>  </p>
               <p className='login-user-name'>Role  <span>{userData.role}</span>  </p>
-              <Link to = "/update-profile">
+              <Link to = {`update-profile/${userData.id}`}>
                   <div className="button-update-me common-btn">Update Profile</div>
               </Link>
             </div>

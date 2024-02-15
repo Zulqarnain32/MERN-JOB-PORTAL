@@ -224,6 +224,11 @@ color:#247bf7;
 }
 .company-container{
   margin-top: 100px;
+
+}
+.company-name{
+  color: rgb(177, 173, 173);
+
 }
 .company-container h1{
   text-align: center;
@@ -623,3 +628,9 @@ color:#247bf7;
 
 
 /* applied jobs container  */
+.applied-title{
+  width: 90%;
+  font-weight: 400;
+  color: rgb(177, 173, 173);
+  margin: 20px auto 0 auto;
+}

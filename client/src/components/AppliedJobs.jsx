@@ -6,19 +6,24 @@ const AppliedJobs = () => {
   const [saved,setSaved] = useState([])
   const userId = window.localStorage.getItem("id")
   // console.log("getting userId " + userId);
-
+  const [numOfAppJobs, setNumOfAppJobs] = useState()
+  
   useEffect(() => {
     axios.get('http://localhost:5000/job/user-jobs/' + userId)
-      .then((res) => {
+    .then((res) => {
+        
         // console.log("saved recipe component", res.data);
         setSaved(res.data);
+        setNumOfAppJobs(res.data.length)
       })
       .catch(err => console.log(err));
   }, []);
+
   
   return (
     <>
-      <h1 className="applied-title">Your Applied Jobs </h1>
+      <h1 className="applied-title" style={{textAlign:"center"}}>Your Applied Jobs </h1>
+      <h1 className='applied-title'>You have applied in {numOfAppJobs} jobs</h1>
       <div className="your-job-container job-container">
       
         {saved.map((job, id) => (
