@@ -115,8 +115,8 @@ router.get('/user', verifyToken, async (req, res) => {
 
 
 //   updating user profile
-// step 1 get user first
 
+// step 1 get user first
 router.get('/getUser/:id', (req,res) => {
     const id = req.params.id;
     UserModel.findById({_id:id})
@@ -124,8 +124,7 @@ router.get('/getUser/:id', (req,res) => {
     .catch(err => res.json(err))
 })
 
-// step 2 update values
-
+// step 2 update values/user
 router.put('/update-user/:id', (req,res) => {
     const id = req.params.id;
     UserModel.findByIdAndUpdate({_id:id}, {
@@ -137,17 +136,6 @@ router.put('/update-user/:id', (req,res) => {
 })
 
 
-
-
-
-
-
-//logout the user
-router.get('/logout',  (req,res) => {
-    res.clearCookie('token')
-    return res.json({message:"token removed"})
-})
-
 //fetch all the users stakeholders
 router.get('/stakeholders', async (req,res) => {
     UserModel.find({})
@@ -157,33 +145,10 @@ router.get('/stakeholders', async (req,res) => {
     .catch(err => console.log(err))
 })
 
-
-//update user profile
-//first get user
-router.get('/getUser/:id', (req, res) => {
-    const id = req.params.id;
-    console.log("id hai " + id); 
-    UserModel.findById({_id: id})
-        .then(result => {
-            console.log(result); 
-            res.json(result);
-        })
-        .catch(err => {
-            console.log(err); 
-            res.json(err);
-        });
-})
-//second updata uder
-router.put('/editUser/:id', (req,res) => {
-    const id = req.params.id;
-    UserModel.findByIdAndUpdate({_id:id},{
-        name:req.body.name,
-        email:req.body.email,
-        password:req.body.password
-    })
-    
-    .then(result => res.json(result))
-    .catch(err => res.json(err))
+//logout the user
+router.get('/logout',  (req,res) => {
+    res.clearCookie('token')
+    return res.json({message:"token removed"})
 })
 
 module.exports = router

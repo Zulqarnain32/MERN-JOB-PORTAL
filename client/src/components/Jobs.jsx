@@ -25,7 +25,6 @@ const Jobs = () => {
         })
         .catch(err => {
           console.error('Error fetching saved jobs:', err);
-          // You can add more specific error handling here
         });
     }
     
@@ -43,7 +42,6 @@ const Jobs = () => {
   );
 
 
-  // first step to save an applied jobs inside the login user
   const handleAppliedJobs = (jobId) => {
     axios.put("http://localhost:5000/job/", {userId,jobId})
     .then((res) => {

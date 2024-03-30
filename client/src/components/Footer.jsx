@@ -29,7 +29,7 @@ const Footer = () => {
             Term & Privacy
         </div>
         <div className='footer-link'>
-            <h2>Company </h2>
+            <h2 className='com'>Company </h2>
             <p>About Us</p>
             <p>About TailGrids</p>
             <p>Contact & Support</p>

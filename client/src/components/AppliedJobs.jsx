@@ -2,7 +2,6 @@ import React,{useState,useEffect} from 'react'
 import axios from "axios"
 
 const AppliedJobs = () => {
-  //last steop to save recipe inside the user
   const [saved,setSaved] = useState([])
   const userId = window.localStorage.getItem("id")
   // console.log("getting userId " + userId);

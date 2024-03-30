@@ -31,9 +31,6 @@ router.delete('/delete/:id', (req,res) => {
     .catch(err => res.json(err))
 })
 
-
-
-
 // first step for saving applied jobs in user who are login
 router.get('/saved-jobs/:id', (req,res) => {
     const id = req.params.id
