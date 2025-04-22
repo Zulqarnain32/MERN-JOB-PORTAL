@@ -8,7 +8,8 @@ const jobRouter = require('./Routes/job')
 
 const port = 5000;
 app.use(cors({
-    origin: ['http://localhost:5173'],
+    // origin: ['http://localhost:5173'],
+    origin: ['https://mern-job-portal-frontend-url.vercel.app'],
     method: ['GET','POST','DELETE','PUT'],
     credentials:true
 }))

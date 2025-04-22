@@ -10,7 +10,8 @@ const UpdateProfile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/auth/getUser/" + id)
+    // axios.get("http://localhost:5000/auth/getUser/" + id)
+    axios.get("https://mern-job-portal-backend-url.vercel.app/auth/getUser/" + id)
     .then((res) => {
       console.log(res);
       setName(res.data.name)
@@ -22,7 +23,8 @@ const UpdateProfile = () => {
   const handleUpdate = (e) => {
     e.preventDefault();
     axios
-      .put("http://localhost:5000/auth/update-user/" + id, {name,email})
+      // .put("http://localhost:5000/auth/update-user/" + id, {name,email})
+      .put("https://mern-job-portal-backend-url.vercel.app/auth/update-user/" + id, {name,email})
       .then((result) => {
         console.log(result.data);
         navigate("/dashboard")

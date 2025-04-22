@@ -8,7 +8,8 @@ const UserDashboard = () => {
   axios.defaults.withCredentials = true;
   useEffect(() => {
     // Fetch user data from the server
-    axios.get('http://localhost:5000/auth/user')  // Use the correct URL
+    // axios.get('http://localhost:5000/auth/user')  // Use the correct URL
+    axios.get('https://mern-job-portal-backend-url.vercel.app/auth/user')  // Use the correct URL
       .then((response) => {
         setUserData(response.data);
         setUserExist(true)

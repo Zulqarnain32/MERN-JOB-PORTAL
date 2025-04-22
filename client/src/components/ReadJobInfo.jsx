@@ -8,7 +8,8 @@ const ReadJobInfo = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/job/readjob`)
+      // .get(`http://localhost:5000/job/readjob`)
+      .get(`https://mern-job-portal-backend-url.vercel.app/job/readjob`)
       .then((result) => {
         setJobData(result.data);
       })

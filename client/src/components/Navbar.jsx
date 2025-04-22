@@ -22,7 +22,7 @@ const Navbar = () => {
     console.log("logout button is clicked");
     window.localStorage.clear();
     axios
-      .get("http://localhost:5000/auth/logout")
+      .get("https://mern-job-portal-backend-url.vercel.app/auth/logout")
       .then((result) => {
         console.log(result.data.message);
         window.location.reload();
@@ -32,7 +32,8 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    axios.get('http://localhost:5000/auth/user')  // Use the correct URL
+    // axios.get('http://localhost:5000/auth/user')  // Use the correct URL
+    axios.get('https://mern-job-portal-backend-url.vercel.app/auth/user')  // Use the correct URL
       .then(response => setUserData(response.data));
   }, []);
 

@@ -7,7 +7,8 @@ const ManageJob = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:5000/auth/dashboard")
+    // axios.get("http://localhost:5000/auth/dashboard")
+    axios.get("https://mern-job-portal-backend-url.vercel.app/auth/dashboard")
     .then((res) => {
         console.log(res.data + " manage page");
         if(res.data == "recruiter"){
@@ -21,7 +22,8 @@ const ManageJob = () => {
 }, [])
 
   useEffect(() => {
-    axios.get('http://localhost:5000/job/readjob')
+    // axios.get('http://localhost:5000/job/readjob')
+    axios.get('https://mern-job-portal-backend-url.vercel.app/job/readjob')
       .then((result) => {
         setJobData(result.data)
       })
@@ -29,7 +31,8 @@ const ManageJob = () => {
 
 
   const handleDelete = (id) => {
-    axios.delete('http://localhost:5000/job/delete/'+ id)
+    // axios.delete('http://localhost:5000/job/delete/'+ id)
+    axios.delete('https://mern-job-portal-backend-url.vercel.app/job/delete/'+ id)
     window.location.reload();
   }
  

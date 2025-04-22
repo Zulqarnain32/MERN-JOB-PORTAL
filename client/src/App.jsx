@@ -24,7 +24,8 @@ const App = () => {
   // const navigate = useNavigate();
   axios.defaults.withCredentials = true;
   useEffect(() => {
-    axios.get("http://localhost:5000/auth/dashboard").then((res) => {
+    // axios.get("http://localhost:5000/auth/dashboard").then((res) => {
+    axios.get("https://mern-job-portal-backend-url.vercel.app/auth/dashboard").then((res) => {
       console.log(res.data + " dashboard page");
       if (res.data == "admin") {
         console.log("congrats! you are admin");
