@@ -39,7 +39,12 @@ router.post('/login' , async (req,res) => {
 
     const token = jwt.sign({ id: user._id, role: user.role }, "Secret Key");
 
-    res.cookie("token",token);
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true, // needed for HTTPS
+        sameSite: 'None' // THIS is important for cross-origin cookies
+      });
+      
     return res.json({message:"logined",id:user._id, role:user.role})
 })
 
@@ -47,6 +52,7 @@ router.post('/login' , async (req,res) => {
 // User Panel 
 const verifyUser = (req,res,next) => {
     const token = req.cookies.token;
+
     if(!token){
        console.log("token is mising");
        return res.json("token is missing")
