@@ -17,7 +17,8 @@ app.use(cookieParser())
 app.use('/auth',userRouter)
 app.use('/job',jobRouter)
 
-mongoose.connect('mongodb://127.0.0.1:27017/MernJobPortal')
+// mongoose.connect('mongodb://127.0.0.1:27017/MernJobPortal')
+mongoose.connect("mongodb+srv://zulqarnainc67:nquv3dHnkMe7RXJQ@cluster0.brcxedi.mongodb.net/")
 .then(() => {
     console.log("connected successfully");
 }).catch(err => console.log(err))

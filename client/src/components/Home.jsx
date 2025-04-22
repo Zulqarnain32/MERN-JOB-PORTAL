@@ -4,7 +4,7 @@ import Banner from './Banner'
 import Companies from './Companies'
 import Footer from './Footer'
 import { Link } from 'react-router-dom' 
-
+ //nquv3dHnkMe7RXJQ
 const Home = () => {
   return (
     <>

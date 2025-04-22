@@ -16,6 +16,7 @@ const Navbar = () => {
   }
 
   const [userData, setUserData] = useState({});
+  
   axios.defaults.withCredentials = true;
   const handleLogout = () => {
     console.log("logout button is clicked");
