@@ -20,8 +20,8 @@ const Login = () => {
         if (result.data.message === "logined") {
           console.log(result.data.role + " you are");
           window.localStorage.setItem("id", result.data.id);
-            // navigate("/dashboard");
-          // window.location.reload();
+            navigate("/dashboard");
+          window.location.reload();
         } else if (result.data.message == "please fil all fields") {
           setError("Please fill all the fields");
         } else if (result.data.message == "email not found") {
