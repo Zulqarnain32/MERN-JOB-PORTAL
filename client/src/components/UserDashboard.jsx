@@ -29,8 +29,8 @@ const UserDashboard = () => {
             <ul className='recruiter-ul user-ul'>
               <div className="user-profile">
               <img src="/assets/user-profile-img.png" className='u-p-img' />
-                <p className='bold'>{userData.name}</p> 
-                <p>{userData.role}</p>
+                <p className='bold'>{userData.name}aaa</p> 
+                <p>{userData.role}aa</p>
               </div>
               <Link className='recruiter-link' to = "/job">Apply for Job</Link>
               <Link className='recruiter-link' to = "/job/applied-job">Applied Jobs</Link>
