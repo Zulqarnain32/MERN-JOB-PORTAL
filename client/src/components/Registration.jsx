@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BarLoader } from "react-spinners";
 
 const Registration = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     axios
       // .post("http://localhost:5000/auth/register", { name, email, password })
       .post("https://mern-job-portal-backend-url.vercel.app/auth/register", { name, email, password })
@@ -24,7 +28,10 @@ const Registration = () => {
           setError("Email already exist");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoading(false)
+      })
   };
 
   return (
@@ -58,9 +65,9 @@ const Registration = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <p className="error">{error}</p>
-        <button type="submit" className="login-btn common-btn">
-          Submit
-        </button>
+          <button type="submit" className="login-btn common-btn">
+              {loading ? <BarLoader color="white" height={4} width={100} /> : "Register"}
+           </button>
         <Link to="/login" className="account">
           Already have an account{" "}
         </Link>
