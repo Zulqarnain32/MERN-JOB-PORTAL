@@ -22,7 +22,7 @@ const AppliedJobs = () => {
   return (
     <>
       <h1 className="applied-title" style={{textAlign:"center"}}>Your Applied Jobs </h1>
-      <h1 className='applied-title'>You have applied in {numOfAppJobs+4} jobs</h1>
+      <h1 className='applied-title'>You have applied in {numOfAppJobs} jobs</h1>
       <div className="your-job-container job-container">
       
         {saved.map((job, id) => (

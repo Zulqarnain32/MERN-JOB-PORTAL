@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BarLoader } from "react-spinners";
 
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
   axios.defaults.withCredentials = true;
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true)
     axios
       // .post("http://localhost:5000/auth/login", { email, password })
       .post("https://mern-job-portal-backend-url.vercel.app/auth/login", { email, password })
@@ -30,7 +33,10 @@ const Login = () => {
           setError("incorrect password");
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoading(false)
+      })
   };
 
   return (
@@ -57,8 +63,9 @@ const Login = () => {
         />
         <p className="error">{error}</p>
         <button type="submit" className="login-btn common-btn">
-          Submit
+           {loading ? <BarLoader color="white" height={4} width={100} /> : "Login"}
         </button>
+
         <Link to="/register" className="account">
           Don't have an account
         </Link>
