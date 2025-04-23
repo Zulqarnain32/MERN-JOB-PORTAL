@@ -15,7 +15,8 @@ const EditJob = () => {
     console.log("edit " + id);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/job/getUser/'+ id)
+        // axios.get('http://localhost:5000/job/getUser/'+ id)
+        axios.get('https://mern-job-portal-backend-url.vercel.app/job/getUser/'+ id)
         .then((result) => {
             setCompany(result.data.company);
             setCity(result.data.city);
@@ -28,7 +29,8 @@ const EditJob = () => {
     }, [])
 
     useEffect(() => {
-        axios.get("http://localhost:5000/auth/dashboard")
+        // axios.get("http://localhost:5000/auth/dashboard")
+        axios.get("https://mern-job-portal-backend-url.vercel.app/auth/dashboard")
         .then((res) => {
             console.log(res.data + " vreat page");
             if(res.data == "recruiter"){
@@ -44,7 +46,8 @@ const EditJob = () => {
 
     const handleUpdate = (e) => {
         e.preventDefault();
-        axios.put("http://localhost:5000/job/edit-job/"+ id,{ jobDate,jobStatus,jobTitle,company,city,jobType })
+        // axios.put("http://localhost:5000/job/edit-job/"+ id,{ jobDate,jobStatus,jobTitle,company,city,jobType })
+        axios.put("https://mern-job-portal-backend-url.vercel.app/job/edit-job/"+ id,{ jobDate,jobStatus,jobTitle,company,city,jobType })
         .then((result) => {
             navigate("/job")
         })

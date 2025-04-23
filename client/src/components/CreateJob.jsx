@@ -13,7 +13,8 @@ const CreateJob = () => {
     const userId = window.localStorage.getItem('id')
 
     useEffect(() => {
-        axios.get("http://localhost:5000/auth/dashboard")
+        // axios.get("http://localhost:5000/auth/dashboard")
+        axios.get("https://mern-job-portal-backend-url.vercel.app/auth/dashboard")
         .then((res) => {
             console.log(res.data + " vreat page");
             if(res.data == "recruiter"){
@@ -29,7 +30,8 @@ const CreateJob = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:5000/job/createjob", { jobDate,jobStatus,jobTitle,company,city,jobType,userId })
+        // axios.post("http://localhost:5000/job/createjob", { jobDate,jobStatus,jobTitle,company,city,jobType,userId })
+        axios.post("https://mern-job-portal-backend-url.vercel.app/job/createjob", { jobDate,jobStatus,jobTitle,company,city,jobType,userId })
         .then((result) => {
             console.log(result.data.message);
             if(result.data.message === "fill all form fields"){

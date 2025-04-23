@@ -8,7 +8,8 @@ const AppliedJobs = () => {
   const [numOfAppJobs, setNumOfAppJobs] = useState()
   
   useEffect(() => {
-    axios.get('http://localhost:5000/job/user-jobs/' + userId)
+    // axios.get('http://localhost:5000/job/user-jobs/' + userId)
+    axios.get('https://mern-job-portal-backend-url.vercel.app/job/user-jobs/' + userId)
     .then((res) => {
         
         // console.log("saved recipe component", res.data);

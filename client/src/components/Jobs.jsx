@@ -12,13 +12,15 @@ const Jobs = () => {
 
   useEffect(() => {
     const readJob = () => {
-      axios.get('http://localhost:5000/job/readjob')
+      // axios.get('http://localhost:5000/job/readjob')
+      axios.get('https://mern-job-portal-backend-url.vercel.app/job/readjob')
       .then((result) => {
           setJobData(result.data);
       });
     }
     const getSavedJobs = () => {
-      axios.get('http://localhost:5000/job/saved-jobs/' + userId)
+      // axios.get('http://localhost:5000/job/saved-jobs/' + userId)
+      axios.get('https://mern-job-portal-backend-url.vercel.app/job/saved-jobs/' + userId)
         .then((result) => {
           console.log(result.data);
           setAppliedJobs(result.data.savedJobs);
