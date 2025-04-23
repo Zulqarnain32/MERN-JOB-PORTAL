@@ -3,7 +3,7 @@ import React from 'react'
 const Nothing = () => {
   return (
     <>
-      <h1>nothing</h1> 
+      <h1>Loading....</h1> 
     </>
   )
 }

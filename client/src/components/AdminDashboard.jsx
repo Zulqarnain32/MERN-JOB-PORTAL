@@ -7,7 +7,8 @@ const AdminDashboard = () => {
 
 
   useEffect(() => {
-       axios.get('http://localhost:5000/auth/stakeholders')
+      //  axios.get('http://localhost:5000/auth/stakeholders')
+       axios.get('https://mern-job-portal-backend-url.vercel.app/auth/stakeholders')
        .then((res) => {
         console.log(res.data);
         setUsers(res.data)
