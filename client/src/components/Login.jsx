@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BarLoader } from "react-spinners";
-
+import { toast } from 'react-toastify'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,16 +21,20 @@ const Login = () => {
       .post("https://mern-job-portal-backend-url.vercel.app/auth/login", { email, password })
       .then((result) => {
         if (result.data.message === "logined") {
+          toast.success("user login successfully")
           console.log(result.data.role + " you are");
           window.localStorage.setItem("id", result.data.id);
             navigate("/dashboard");
           window.location.reload();
         } else if (result.data.message == "please fil all fields") {
           setError("Please fill all the fields");
+          toast.warning("Please fill all the fields")
         } else if (result.data.message == "email not found") {
           setError("Email not found");
+          toast.error("Email not found")
         } else if (result.data.message == "incorrect password") {
           setError("incorrect password");
+          toast.error("incorrect password")
         }
       })
       .catch((err) => console.log(err))

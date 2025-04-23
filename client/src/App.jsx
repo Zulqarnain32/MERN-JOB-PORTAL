@@ -17,6 +17,7 @@ import ReadJobInfo from "./components/ReadJobInfo";
 import UpdateProfile from "./components/UpdateProfile";
 import EditJob from "./components/EditJob";
 import AppliedJobs from "./components/AppliedJobs";
+import 'react-toastify/dist/ReactToastify.css'
 
 const App = () => {
   const [userIs, setUserIs] = useState("");
