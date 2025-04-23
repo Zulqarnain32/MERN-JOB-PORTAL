@@ -45,7 +45,8 @@ const Jobs = () => {
 
 
   const handleAppliedJobs = (jobId) => {
-    axios.put("http://localhost:5000/job/", {userId,jobId})
+    // axios.put("http://localhost:5000/job/", {userId,jobId})
+    axios.put("https://mern-job-portal-backend-url.vercel.app/job/", {userId,jobId})
     .then((res) => {
      setAppliedJobs(res.data.savedJobs)
      window.location.reload();
@@ -72,7 +73,7 @@ const Jobs = () => {
         <p className='awailable-job'>
           { 
             filteredJobs.length > 0 ? 
-            <span>{filteredJobs.length} job available</span>:<span className='no-found'> no job found</span>
+            <span>{filteredJobs.length} job available</span>:<span className='no-found'>loading...</span>
           }
         </p>
       </div>
