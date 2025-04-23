@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BarLoader } from "react-spinners";
-import { toast } from 'react-toastify'
+import { toast,ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'; 
 const Login = () => {
   const [email, setEmail] = useState("");
