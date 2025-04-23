@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BarLoader } from "react-spinners";
 import { toast } from 'react-toastify'
-
+import 'react-toastify/dist/ReactToastify.css'; 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,6 +45,7 @@ const Login = () => {
 
   return (
     <div className="register-container">
+      <ToastContainer position="top-center" autoClose={3000} />
       <form className="register-form" onSubmit={handleSubmit}>
       <img src="/assets/logi1.png" className="logo-img img-login"/>
 
