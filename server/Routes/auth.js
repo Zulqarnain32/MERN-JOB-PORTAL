@@ -41,9 +41,10 @@ router.post('/login' , async (req,res) => {
 
     res.cookie("token", token, {
         httpOnly: true,
-        secure: true, // needed for HTTPS
-        sameSite: 'None' // THIS is important for cross-origin cookies
+        secure: true,
+        sameSite: 'None'
       });
+      
       
     return res.json({message:"logined",id:user._id, role:user.role})
 })
