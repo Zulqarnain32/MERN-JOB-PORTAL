@@ -16,13 +16,14 @@ const AppliedJobs = () => {
         setSaved(res.data);
         setNumOfAppJobs(res.data.length)
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
+      .finally(() => {
+        setLoad(false)
+      })
   }, []);
 
 const [load,setLoad] = useState(true)
-  setTimeout(() => {
-    setLoad(false)
-  },2000)
+
   
   return (
     <>
