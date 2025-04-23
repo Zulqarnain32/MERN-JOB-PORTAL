@@ -29,10 +29,10 @@ const [load,setLoad] = useState(true)
       <h1 className="applied-title" style={{textAlign:"center"}}>Your Applied Jobs </h1>
       <h1 className='applied-title'>You have applied in {numOfAppJobs} jobs</h1>
       <div className="your-job-container job-container">
+        {load && <p>Loading...</p>}
         {saved.map((job, id) => (
           <div className="job" key={job._id}>
           <div className='job-heading'>
-            {load && <p>Loading...</p>}
             <div className='letter'>
               <div className="l">C</div>
             </div>
