@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { BarLoader } from "react-spinners";
+import { toast,ToastContainer } from 'react-toastify'
 
 const Registration = () => {
   const [name, setName] = useState("");
@@ -22,10 +23,14 @@ const Registration = () => {
         if (result.data.message == "user register successfully") {
           console.log(result);
           navigate("/login");
+          toast.success("user registered successfully")
         } else if (result.data.message == "please fil all fields") {
           setError("Please fill all the fields");
+          toast.warning("Please fill all the fields")
         } else if (result.data.message == "email already exist") {
           setError("Email already exist");
+          toast.error("Email already exist");
+
         }
       })
       .catch((err) => console.log(err))
@@ -36,6 +41,7 @@ const Registration = () => {
 
   return (
     <div className="register-container">
+            <ToastContainer position="top-center" autoClose={3000} />
       <form className="register-form" onSubmit={handleSubmit}>
           <img src="/assets/logi1.png" className="logo-img img-login"/>
         <h2 className="heading">Sign Up</h2>
