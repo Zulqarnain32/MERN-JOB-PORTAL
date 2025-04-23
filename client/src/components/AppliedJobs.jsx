@@ -5,6 +5,7 @@ const AppliedJobs = () => {
   const [saved,setSaved] = useState([])
   const userId = window.localStorage.getItem("id")
   // console.log("getting userId " + userId);
+  const [load,setLoad] = useState(true)
   const [numOfAppJobs, setNumOfAppJobs] = useState()
   
   useEffect(() => {
@@ -22,7 +23,7 @@ const AppliedJobs = () => {
       })
   }, []);
 
-const [load,setLoad] = useState(true)
+
 
   
   return (
